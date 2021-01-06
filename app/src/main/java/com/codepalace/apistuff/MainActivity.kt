@@ -72,8 +72,8 @@ class MainActivity : AppCompatActivity() {
                 val response = api.getRandomDog()
                 Log.d("Main", "Size: ${response.fileSizeBytes}")
 
-                //If the image is less than about 3mb, then we try to load it into our app, else we try again.
-                if (response.fileSizeBytes < 300_000) {
+                //If the image is less than about 4mb, then we try to load it into our app, else we try again.
+                if (response.fileSizeBytes < 400_000) {
                     withContext(Dispatchers.Main) {
                         Glide.with(applicationContext).load(response.url).into(binding.ivRandomDog)
                         binding.ivRandomDog.visibility = View.VISIBLE
