@@ -2,22 +2,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:id="@+id/rl_layout"
-    android:background="@drawable/gradient_list">
+    android:background="@drawable/gradient_list"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="26dp"
+        android:backgroundTint="#FFFFFF"
+        android:clickable="true"
+        android:focusable="true"
+        android:tint="#FFFFFF"
+        app:rippleColor="#FFFFFF"
+        app:srcCompat="@android:drawable/stat_notify_sync" />
 
     <com.agrawalsuneet.dotsloader.loaders.LazyLoader
         android:id="@+id/dots_loading"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_margin="20dp"
         android:layout_marginTop="30dp"
         app:lazyloader_animDur="400"
         app:lazyloader_dotsDist="10dp"
-        app:lazyloader_dotsRadius="8dp"
+        app:lazyloader_dotsRadius="7dp"
         app:lazyloader_firstDelayDur="150"
         app:lazyloader_firstDotColor="#fff"
         app:lazyloader_interpolator="@android:anim/decelerate_interpolator"
@@ -30,16 +47,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="0dp"
-        android:background="@color/black" />
-
-    <Button
-        android:id="@+id/api_request_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_margin="20dp"
-        android:text="Random" />
+        android:layout_margin="0dp" />
 
 </RelativeLayout>

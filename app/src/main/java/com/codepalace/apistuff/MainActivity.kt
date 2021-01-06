@@ -4,6 +4,7 @@ import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import com.bumptech.glide.Glide
 import com.codepalace.apistuff.api.ApiRequest
@@ -33,8 +34,16 @@ class MainActivity : AppCompatActivity() {
 
         makeApiRequest()
 
-        binding.apiRequestButton.setOnClickListener {
+        binding.floatingActionButton.setOnClickListener {
+
+            binding.floatingActionButton.animate().apply {
+                rotationBy(360f)
+                duration =  1000
+            }.start()
+
             makeApiRequest()
+            binding.ivRandomDog.visibility = View.GONE
+
         }
     }
 
@@ -48,6 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun makeApiRequest() {
+
         val api = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -59,14 +69,19 @@ class MainActivity : AppCompatActivity() {
                 val response = api.getRandomDog()
                 Log.d("Main", "Size: ${response.fileSizeBytes}")
 
-                withContext(Dispatchers.Main) {
-                    Glide.with(applicationContext).load(response.url).into(binding.ivRandomDog)
+                if (response.fileSizeBytes < 300_000) {
+                    withContext(Dispatchers.Main) {
+                        Glide.with(applicationContext).load(response.url).into(binding.ivRandomDog)
+                        binding.ivRandomDog.visibility = View.VISIBLE
+                    }
+                } else {
+                    makeApiRequest()
                 }
 
             } catch (e: Exception) {
                 Log.e("Main", "Error: ${e.message}")
             }
-
         }
     }
+
 }
