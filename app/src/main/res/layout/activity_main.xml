@@ -14,10 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="26dp"
+        android:layout_margin="26dp"
         android:backgroundTint="#FFFFFF"
         android:clickable="true"
         android:focusable="true"
@@ -48,6 +45,6 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:layout_margin="0dp"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter" />
 
 </RelativeLayout>
